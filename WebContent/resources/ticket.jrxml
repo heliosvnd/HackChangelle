@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2019-08-25T01:50:15 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ticket" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="66080134-8b79-4a57-9d41-44ebdd2d08ed">
+	<parameter name="Tickect" class="bean.Ticket"/>
+	<parameter name="Nombre" class="java.lang.String"/>
+	<parameter name="Escudo" class="java.io.InputStream"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="86" splitType="Stretch">
+			<textField>
+				<reportElement x="240" y="40" width="100" height="30" uuid="9b88dd75-f445-4694-8bb2-3e06901065d2"/>
+				<textFieldExpression><![CDATA[$P{Tickect}.getOperacion().getTipo()+"\n"+
+"Cuenta Socio"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="70" splitType="Stretch">
+			<textField>
+				<reportElement x="180" y="8" width="200" height="52" uuid="8c80049f-1d2c-40b7-8a99-0a44f089ad91"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Numero de Cuenta"+"\t"+$P{Tickect}.getCliente().getNoCuenta()+"\n"+
+"Cuenta Clabe"+"\t"+$P{Tickect}.getCliente().getNoClabeInterbancaria()+"\n"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="110" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="0" width="200" height="40" uuid="57148c6c-0b20-472c-8384-aad96696029c"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Esta es tu cuenta CLABE para traer tu dinero de otros Bancos a Banco Azteca (Sirve para depósitos interbancarios)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="180" y="40" width="200" height="70" uuid="ecd4c2b8-d5e0-4ca7-b669-89a442b58439"/>
+				<textFieldExpression><![CDATA[$P{Nombre}+"\n"+
+"Idenficicación: "+"\n"+
+$P{Tickect}.getCliente().getIden().name()+"\n"+
+"No.: "+$P{Tickect}.getCliente().getNoIden()]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="261" splitType="Stretch">
+			<line>
+				<reportElement x="180" y="10" width="200" height="1" uuid="20a1d63a-9971-4c4f-974f-94ccd15f5fa4"/>
+			</line>
+			<textField>
+				<reportElement x="180" y="27" width="200" height="30" uuid="cf75a239-2025-4537-9b8a-3e984e6e7c96"/>
+				<textFieldExpression><![CDATA["Importe del "+$P{Tickect}.getOperacion().getTipo().toString().toLowerCase()+": $"+$P{Tickect}.getOperacion().getImporte()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="80" width="200" height="140" uuid="2b8578d8-e4f0-434b-ba35-8571e35eebd9"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Tickect}.getSucursal().getDireccion()+"\n"+
+"Sucursal "+$P{Tickect}.getSucursal().getNo()+" "+$P{Tickect}.getSucursal().getNombre() +"\n"+
+"Te atendió: "+ $P{Tickect}.getSucursal().getCajero()+""+"\n"+
+"Fecha y Hora: "+$P{Tickect}.getOperacion().getFecha()+"\n"+
+"No. Operación: "+$P{Tickect}.getOperacion().getNo()+"\n"+
+"Número de autorización: "+$P{Tickect}.getOperacion().getAutorizacion()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="180" y="230" width="200" height="1" uuid="2840de96-74a5-4399-a18d-70d677151f89"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="71" splitType="Stretch">
+			<line>
+				<reportElement x="177" y="15" width="200" height="1" uuid="96cf5616-c246-4fdc-9904-ba46fb040ea2"/>
+			</line>
+			<textField>
+				<reportElement x="180" y="21" width="200" height="41" uuid="a7c7a0b9-3d2e-45e4-8fea-19c3022f528e">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["AVISO DE PRIVACIDAD"+"\n"+
+"Consulta del aviso de privacidad en"+"\n"+
+"www.bancoazteca.com.mx"
+]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="160" splitType="Stretch">
+			<textField>
+				<reportElement x="180" y="0" width="200" height="110" uuid="6bd9cb83-c499-44e4-95ed-d7a74e4c435d">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Solo es válido con la firma del cajero"+"\n"+
+"Línea Azteca 01-800-040-7777"+"\n\n"+
+
+"BANCO AZTECA, S.A."+"\n"+
+"INSTITUCION DE BANCA MULTIPLE"+"\n"+
+"BAI-020523-6Y8"+"\n"+
+"Av.FF CC de Rio Frio No. 419-A10"+"\n"+
+"FRACC. IND DEL MORAL C.P 09010 Cuidad de Mexico"]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="200" y="110" width="130" height="50" uuid="2cfd0ee3-1ea9-4877-a5cc-71e6000fbf82"/>
+				<imageExpression><![CDATA[$P{Escudo}]]></imageExpression>
+			</image>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="70" splitType="Stretch"/>
+	</summary>
+</jasperReport>
